@@ -377,7 +377,7 @@
 			});
 		};
 		
-		$.parseApennd = function(dom){
+		$.parseAppend = function(dom){
 			$('ul.formFrame').append(dom);
 		};
 		
@@ -385,28 +385,28 @@
 			var $requiredDom = $object.required == 'true' ? '<p class="formQuestions">' + $object.title + '<span class="required"></span></p>' : '<p class="formQuestions">'+$object.title+'</p>',
 			$requiredClass = $object.required == 'true' ? 'class="formElementRequired active"' : 'class="formElementRequired"',
 			$prs = '<li class="fieldFrame formTextbox"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="Type your questions" placeholder="Type your questions" />'+ $requiredDom +'<input type="text" id="'+ $object.id +'" name="'+ $object.name +'" class="formTextUser" value="User input box" placeholder="User input box" readonly="true"/><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" '+ $requiredClass +'></a></nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
-			$.parseApennd($prs);
+			$.parseAppend($prs);
 		};
 		
 		$.editTextareaParse = function($object){
 			var $requiredDom = $object.required == 'true' ? '<p class="formQuestions">' + $object.title + '<span class="required"></span></p>' : '<p class="formQuestions">'+$object.title+'</p>',
 			$requiredClass = $object.required == 'true' ? 'class="formElementRequired active"' : 'class="formElementRequired"',
 			$prs = '<li class="fieldFrame fromTextarea"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="Type your questions" placeholder="Type your questions" />'+ $requiredDom +'<textarea id="'+ $object.id +'" name="'+ $object.name +'" class="formTextareaUser" placeholder="User input box" readonly="true">User input box</textarea><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" '+ $requiredClass +'></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
-			$.parseApennd($prs);
+			$.parseAppend($prs);
 		};
 		
 		$.editPickerParse = function($object){
 			var $requiredDom = $object.required == 'true' ? '<p class="formQuestions">' + $object.title + '<span class="required"></span></p>' : '<p class="formQuestions">'+$object.title+'</p>',
 			$requiredClass = $object.required == 'true' ? 'class="formElementRequired active"' : 'class="formElementRequired"',
 			$prs = '<li class="fieldFrame fromPicker"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="Type your questions" placeholder="Type your questions" />'+ $requiredDom +'<input type="text" id="'+ $object.id +'" class="formPicker" placeholder="MM/DD/YY" name="'+$object.name+'"/><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" '+ $requiredClass +'></a></nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
-			$.parseApennd($prs);
+			$.parseAppend($prs);
 		};
 		
 		$.editSliderParse = function($object){
 			var $requiredDom = $object.required == 'true' ? '<p class="formQuestions">' + $object.title + '<span class="required"></span></p>' : '<p class="formQuestions">'+$object.title+'</p>',
 			$requiredClass = $object.required == 'true' ? 'class="formElementRequired active"' : 'class="formElementRequired"',
 			$prs = '<li class="fieldFrame formSlider"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="Type your questions" placeholder="Type your questions" />'+ $requiredDom +'<div class="sliderFrame"><div id="'+ $object.id +'" class="slider"></div><span class="sliderInfo"><span id="slider-result_'+ stringClear($object.id) +'" class="slider-result">50</span> %</span><input type="hidden" class="sliderHiddenField" name="sliderValues_' + stringClear($object.id) +'" value="50"/></div><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" '+ $requiredClass +'></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
-			$.parseApennd($prs);
+			$.parseAppend($prs);
 		};
 		
 		$.editRadioParse = function($object){
@@ -420,7 +420,7 @@
 				tempDiv += '<p style="display:none">'+ $object.choice[i].text +'<a href="#"></a></p>';
 			});
 			$prs = '<li class="fieldFrame formRadio"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="Type your questions" placeholder="Type your questions" />'+ $requiredDom +'<input class="formCheckboxUser" placeholder="type names for your categories / items" /><input type="button" value="add" class="formAddElementUser"/><div class="checkGroupFrame">'+ tempDiv +'</div><div class="formInputRadioFrame">'+ tempInput +'</div><a href="#" class="formElementDelete"></a> <a href="#" class="formRadioSaveGroup"></a> <a href="#" '+ $requiredClass +'></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
-			$.parseApennd($prs);
+			$.parseAppend($prs);
 		};
 		
 		$.editCheckboxParse = function($object){
@@ -434,7 +434,7 @@
 				tempDiv += '<p style="display:none">'+ $object.choice[i].text +'<a href="#"></a></p>';
 			});
 			$prs = '<li class="fieldFrame formCheckbox"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="Type your questions" placeholder="Type your questions" />'+ $requiredDom +'<input class="formCheckboxUser" placeholder="type names for your categories / items" /><input type="button" value="add" class="formAddElementUser"/><div class="checkGroupFrame">'+ tempDiv +'</div><div class="formInputCheckFrame">'+ tempInput +'</div><a href="#" class="formElementDelete"></a> <a href="#" class="formCheckboxSaveGroup"></a> <a href="#" '+ $requiredClass +'></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
-			$.parseApennd($prs);
+			$.parseAppend($prs);
 		};
 		
 		function stringClear(val){
