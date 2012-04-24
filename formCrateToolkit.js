@@ -1,6 +1,15 @@
 $(function(){
 /*--------------------------PLUGING------------------------------------------*/
-	$.fn.formCreate();
+	$.fn.formCreate({
+		questionText : 'deneme yazısı',
+		userInputText : 'user deneme yazısı',
+		userRadioText : 'radyo buton demosu',
+		userCheckboxText : 'checkbox buton demosu',
+		userDatePickerText : 'GG/AA/YY',
+		userAddButton: 'Ekle',
+		userAddInput : 'eklenecek elemanları yaz'
+	});
+	
 	$( ".formFrame" ).sortable({
 		handle : '.sortArrow',
 		axis: 'y',
@@ -22,6 +31,11 @@ $(function(){
 	
 	$('a.formElementSave').live('click',function(e){
 		$.fn.formCreate.ElementSave(e);
+		return false;
+	});
+	
+	$('a.formSliderSave').live('click',function(e){
+		$.fn.formCreate.SliderSave(e);
 		return false;
 	});
 
@@ -112,21 +126,9 @@ $(function(){
  				$Json = $.fn.formCreate.FormEncode();
 				//ajax yazılacak
 				//$.fn.formCreate.FormParser($Json);
-			/*	var deneme = $.parseJSON($Json); //JSON.parse($Json); //eval("("+$Json+")");
-				for(i in deneme["data"]){
-					console.log(deneme["data"][i].title);
-					console.log(deneme["data"][i].type);
-					console.log(deneme["data"][i].required);
-					if(typeof deneme["data"][i].choice != 'undefined'){
-						for(j in deneme["data"][i].choice){
-							console.log(deneme["data"][i].choice[j]);
-						}
-					}
-				};*/
 				console.log($Json);
 			}
 		}else{
-			//alert('object does not exist');
 			$.colorbox({
 			inline:true, href:"#FormPreview"	
 			});
@@ -147,13 +149,11 @@ $(function(){
 				$(this).closest('div.sliderFrame').find('input.sliderHiddenField').attr('value',ui.value);
 			}
 		});
-		$( ".formPreviewPicker" ).datepicker({
-		showOn: 'both',	
-		});
+		$( ".formPreviewPicker" ).datepicker({showOn: 'both'});
 	});
 	
 /*-----------scroll side bar--------------------*/
-	if($(".menuColumn").length > 0){
+/*	if($(".menuColumn").length > 0){
 		var offset = $(".menuColumn").offset();
 		$(window).scroll(function() {
 			if ($(window).scrollTop() > offset.top) {
@@ -166,6 +166,6 @@ $(function(){
 				},300,'linear');
 			};
 		});
-	}
+	}*/
 
 });
