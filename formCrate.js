@@ -33,12 +33,12 @@
             $radioExist = [],
             $checkExist = [],
             $formDataJSON = null,
-			sliderOptions = {
-			  max: 100,
-			  min: 0,
-			  step: 1,
-			  value: 50
-      	   };
+            sliderOptions = {
+                max: 100,
+                min: 0,
+                step: 1,
+                value: 50
+            };
 
         $.fn.formCreate.CreateElement = function (value) {
             switch (value) {
@@ -268,25 +268,25 @@
             var $dom = $(event.target).closest('li.fieldFrame'),
                 $val = $dom.find('input.formTextQuestions').val(),
                 $nav = $dom.children('nav.hoverPosition'),
-				$options = $dom.find('div.sliderOptionsFrame');
+                $options = $dom.find('div.sliderOptionsFrame');
             $dom.find('p.formQuestions').text($val);
             $nav.addClass('clearBg');
             $nav.find('a, input.formTextQuestions').hide();
             if ($dom.find('a.formElementRequired').hasClass('active')) $dom.find('p.formQuestions').append('<span class="required"></span>');
             $dom.find('p.formQuestions').show();
             $dom.find('div.sortArrow, div.sliderOptionsFrame').hide();
-			sliderOptions.max = parseInt($options.children('input[name=max]').val());
-			sliderOptions.min = parseInt($options.children('input[name=min]').val());
-			sliderOptions.step = parseInt($options.children('input[name=step]').val());
-			sliderOptions.value = parseInt($options.children('input[name=value]').val());
+            sliderOptions.max = parseInt($options.children('input[name=max]').val());
+            sliderOptions.min = parseInt($options.children('input[name=min]').val());
+            sliderOptions.step = parseInt($options.children('input[name=step]').val());
+            sliderOptions.value = parseInt($options.children('input[name=value]').val());
             $.sliderNewOptions(event);
         };
 
         $.sliderNewOptions = function (event) {
             var dom = $(event.target).closest('li.fieldFrame'),
-			element = dom.find('div.slider');
-			$(element).slider("option" , sliderOptions);
-			dom.find('span.slider-result').text(sliderOptions.value);
+                element = dom.find('div.slider');
+            $(element).slider("option", sliderOptions);
+            dom.find('span.slider-result').text(sliderOptions.value);
         };
 
         $.fn.formCreate.ElementEdit = function (event) {
@@ -350,15 +350,15 @@
         $.sliderEncode = function ($dom) {
             var $question = $($dom).find('p.formQuestions').text(),
                 $required = $($dom).find('a.formElementRequired').hasClass('active') ? 'true' : 'false',
-				max = parseInt($($dom).find('input[name=max]').val()),
-				min = parseInt($($dom).find('input[name=min]').val()),
-				step = parseInt($($dom).find('input[name=step]').val()),
-				value = parseInt($($dom).find('input[name=value]').val());
+                max = parseInt($($dom).find('input[name=max]').val()),
+                min = parseInt($($dom).find('input[name=min]').val()),
+                step = parseInt($($dom).find('input[name=step]').val()),
+                value = parseInt($($dom).find('input[name=value]').val());
             $formDataJSON += '"title":"' + $question + '",';
             $formDataJSON += '"type":"slider",';
             $formDataJSON += '"id":"' + $($dom).find("div.slider").attr("id") + '",';
             $formDataJSON += '"required":"' + $required + '",';
-			$formDataJSON += '"sliderOptions":{"max":'+ max +',"min":'+ min +',"step":'+ step +',"value":'+ value +'}';
+            $formDataJSON += '"sliderOptions":{"max":' + max + ',"min":' + min + ',"step":' + step + ',"value":' + value + '}';
         };
 
         $.radioEncode = function ($dom) {
@@ -433,30 +433,30 @@
         $.editTextParse = function ($object) {
             var $requiredDom = $object.required == 'true' ? '<p class="formQuestions">' + $object.title + '<span class="required"></span></p>' : '<p class="formQuestions">' + $object.title + '</p>',
                 $requiredClass = $object.required == 'true' ? 'class="formElementRequired active"' : 'class="formElementRequired"',
-                $prs = '<li class="fieldFrame formTextbox"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<input type="text" id="' + $object.id + '" name="' + $object.name + '" class="formTextUser" value="'+ settings.userInputText +'" placeholder="'+ settings.userInputText +'" readonly="true"/><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" ' + $requiredClass + '></a></nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
+                $prs = '<li class="fieldFrame formTextbox"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<input type="text" id="' + $object.id + '" name="' + $object.name + '" class="formTextUser" value="' + settings.userInputText + '" placeholder="' + settings.userInputText + '" readonly="true"/><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" ' + $requiredClass + '></a></nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
             $.parseApennd($prs);
         };
 
         $.editTextareaParse = function ($object) {
             var $requiredDom = $object.required == 'true' ? '<p class="formQuestions">' + $object.title + '<span class="required"></span></p>' : '<p class="formQuestions">' + $object.title + '</p>',
                 $requiredClass = $object.required == 'true' ? 'class="formElementRequired active"' : 'class="formElementRequired"',
-                $prs = '<li class="fieldFrame fromTextarea"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<textarea id="' + $object.id + '" name="' + $object.name + '" class="formTextareaUser" placeholder="'+ settings.userInputText +'" readonly="true">'+ settings.userInputText +'</textarea><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" ' + $requiredClass + '></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
+                $prs = '<li class="fieldFrame fromTextarea"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<textarea id="' + $object.id + '" name="' + $object.name + '" class="formTextareaUser" placeholder="' + settings.userInputText + '" readonly="true">' + settings.userInputText + '</textarea><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" ' + $requiredClass + '></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
             $.parseApennd($prs);
         };
 
         $.editPickerParse = function ($object) {
             var $requiredDom = $object.required == 'true' ? '<p class="formQuestions">' + $object.title + '<span class="required"></span></p>' : '<p class="formQuestions">' + $object.title + '</p>',
                 $requiredClass = $object.required == 'true' ? 'class="formElementRequired active"' : 'class="formElementRequired"',
-                $prs = '<li class="fieldFrame fromPicker"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<input type="text" id="' + $object.id + '" class="formPicker" placeholder="'+ settings.userDatePickerText +'" name="' + $object.name + '"/><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" ' + $requiredClass + '></a></nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
+                $prs = '<li class="fieldFrame fromPicker"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<input type="text" id="' + $object.id + '" class="formPicker" placeholder="' + settings.userDatePickerText + '" name="' + $object.name + '"/><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" ' + $requiredClass + '></a></nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
             $.parseApennd($prs);
         };
 
         $.editSliderParse = function ($object) {
             var $requiredDom = $object.required == 'true' ? '<p class="formQuestions">' + $object.title + '<span class="required"></span></p>' : '<p class="formQuestions">' + $object.title + '</p>',
                 $requiredClass = $object.required == 'true' ? 'class="formElementRequired active"' : 'class="formElementRequired"',
-                $prs = '<li class="fieldFrame formSlider"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<div class="sliderOptionsFrame"><input type="text" class="sliderOptions" name="max" value="'+ $object.sliderOptions.max +'"/><input type="text" class="sliderOptions" name="min" value="'+ $object.sliderOptions.min +'"/><input type="text" class="sliderOptions" name="step" value="'+ $object.sliderOptions.step +'"/><input type="text" class="sliderOptions" name="value" value="'+ $object.sliderOptions.value +'"/></div><div class="sliderFrame"><div id="' + $object.id + '" class="slider"></div><span class="sliderInfo"><span id="slider-result_' + stringClear($object.id) + '" class="slider-result">'+ $object.sliderOptions.value +'</span> %</span><input type="hidden" class="sliderHiddenField" name="sliderValues_' + stringClear($object.id) + '" value="'+ $object.sliderOptions.value +'"/></div><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" ' + $requiredClass + '></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
+                $prs = '<li class="fieldFrame formSlider"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<div class="sliderOptionsFrame"><input type="text" class="sliderOptions" name="max" value="' + $object.sliderOptions.max + '"/><input type="text" class="sliderOptions" name="min" value="' + $object.sliderOptions.min + '"/><input type="text" class="sliderOptions" name="step" value="' + $object.sliderOptions.step + '"/><input type="text" class="sliderOptions" name="value" value="' + $object.sliderOptions.value + '"/></div><div class="sliderFrame"><div id="' + $object.id + '" class="slider"></div><span class="sliderInfo"><span id="slider-result_' + stringClear($object.id) + '" class="slider-result">' + $object.sliderOptions.value + '</span> %</span><input type="hidden" class="sliderHiddenField" name="sliderValues_' + stringClear($object.id) + '" value="' + $object.sliderOptions.value + '"/></div><a href="#" class="formElementDelete"></a> <a href="#" class="formElementSave"></a> <a href="#" ' + $requiredClass + '></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
             $('ul.formFrame').append($prs);
-			$('#'+ $object.id).slider({
+            $('#' + $object.id).slider({
                 animate: true,
                 range: 'min',
                 value: $object.sliderOptions.value,
@@ -482,7 +482,7 @@
                 tempInput += '<input type="radio" id="' + $object.choice[i].id + '" name="' + $object.name + '"/><label for="' + $object.choice[i].id + '" class="rbLabel">' + $object.choice[i].text + '</label>';
                 tempDiv += '<p style="display:none">' + $object.choice[i].text + '<a href="#"></a></p>';
             });
-            $prs = '<li class="fieldFrame formRadio"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<input class="formCheckboxUser" placeholder="'+ settings.userAddInput +'" /><input type="button" value="'+ settings.userAddButton +'" class="formAddElementUser"/><div class="checkGroupFrame">' + tempDiv + '</div><div class="formInputRadioFrame">' + tempInput + '</div><a href="#" class="formElementDelete"></a> <a href="#" class="formRadioSaveGroup"></a> <a href="#" ' + $requiredClass + '></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
+            $prs = '<li class="fieldFrame formRadio"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<input class="formCheckboxUser" placeholder="' + settings.userAddInput + '" /><input type="button" value="' + settings.userAddButton + '" class="formAddElementUser"/><div class="checkGroupFrame">' + tempDiv + '</div><div class="formInputRadioFrame">' + tempInput + '</div><a href="#" class="formElementDelete"></a> <a href="#" class="formRadioSaveGroup"></a> <a href="#" ' + $requiredClass + '></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
             $.parseApennd($prs);
         };
 
@@ -495,7 +495,7 @@
                 tempInput += '<input type="checkbox" id="' + $object.choice[i].id + '" name="' + $object.name + '"/><label for="' + $object.choice[i].id + '" class="cbLabel">' + $object.choice[i].text + '</label>';
                 tempDiv += '<p style="display:none">' + $object.choice[i].text + '<a href="#"></a></p>';
             });
-            $prs = '<li class="fieldFrame formCheckbox"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<input class="formCheckboxUser" placeholder="'+ settings.userAddInput +'" /><input type="button" value="'+ settings.userAddButton +'" class="formAddElementUser"/><div class="checkGroupFrame">' + tempDiv + '</div><div class="formInputCheckFrame">' + tempInput + '</div><a href="#" class="formElementDelete"></a> <a href="#" class="formCheckboxSaveGroup"></a> <a href="#" ' + $requiredClass + '></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
+            $prs = '<li class="fieldFrame formCheckbox"><nav class="hoverPosition clearBg"><input type="text" class="formTextQuestions" value="' + settings.questionText + '" placeholder="' + settings.questionText + '" />' + $requiredDom + '<input class="formCheckboxUser" placeholder="' + settings.userAddInput + '" /><input type="button" value="' + settings.userAddButton + '" class="formAddElementUser"/><div class="checkGroupFrame">' + tempDiv + '</div><div class="formInputCheckFrame">' + tempInput + '</div><a href="#" class="formElementDelete"></a> <a href="#" class="formCheckboxSaveGroup"></a> <a href="#" ' + $requiredClass + '></a> </nav><p class="formSeperator"></p><div class="sortArrow"></div><a href="#" class="formEdit"></a></li>';
             $.parseApennd($prs);
         };
 
